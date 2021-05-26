@@ -3,7 +3,7 @@ import app from './src/app.mjs';
 
 const DATABASE = process.env.DATABASE.replace(
   '<PASSWORD>',
-  process.env.DB_PASS
+  process.env.DB_PASS,
 );
 
 mongoose
@@ -17,6 +17,6 @@ mongoose
 
 app.listen(process.env.SERVER_PORT, () => {
   console.log(
-    `<--- App running on localhost (Port: ${process.env.SERVER_PORT}) --->`
+    `<--- App running on localhost (Port: ${process.env.SERVER_PORT}) --->`,
   );
 });

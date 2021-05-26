@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is a project build for the course Web Development II.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon server.js"
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "connect-redis": "^5.2.0",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongodb": "^3.6.8",

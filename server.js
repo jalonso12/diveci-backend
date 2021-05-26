@@ -1,5 +1,5 @@
-const app = require('./app');
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import app from './src/app.mjs';
 
 const DATABASE = process.env.DATABASE.replace(
   '<PASSWORD>',

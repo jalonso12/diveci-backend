@@ -1,10 +1,19 @@
 import express from 'express';
-import { createRole, getRoles } from '../controllers/adminController.mjs';
+import {
+  createRole,
+  getRoles,
+  removeRole,
+  updateRole,
+} from '../controllers/adminController.mjs';
 
 const ROUTER = express.Router();
 
 ROUTER.route('/roles').get(getRoles);
 
-ROUTER.route('/new-role').post(createRole);
+ROUTER.route('/roles/update').patch(updateRole);
+
+ROUTER.route('/roles/remove').delete(removeRole);
+
+ROUTER.route('/roles/new-role').post(createRole);
 
 export default ROUTER;

@@ -6,13 +6,15 @@ export const encryptText = (text) =>
 
 export const decryptText = (text) => {
   const bytes = CryptoJS.AES.decrypt(text, `${process.env.SECRET_KEY}`);
-  return bytes.toString(CryptoJS.enc.Utf8);
+
+  const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+  return decrypted;
 };
 
 export const encryptData = (data) => {
   const ciphertext = CryptoJS.AES.encrypt(
     JSON.stringify(data),
-    `${process.env.SECRET_KEY}`
+    `${process.env.SECRET_KEY}`,
   ).toString();
 
   return ciphertext;

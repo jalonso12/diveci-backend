@@ -4,7 +4,7 @@ import {
   getRoles,
   removeRole,
   updateRole,
-} from '../controllers/adminController.mjs';
+} from '../controllers/roleController.mjs';
 
 const ROUTER = express.Router();
 

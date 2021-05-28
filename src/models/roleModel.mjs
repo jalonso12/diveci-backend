@@ -6,6 +6,7 @@ const roleSchema = new mongoose.Schema(
   {
     title: {
       type: String,
+      unique: true,
       required: [true, 'To create a new role a title is requried'],
     },
     description: {

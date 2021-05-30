@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createRole,
+  getRole,
   getRoles,
   removeRole,
   updateRole,
@@ -9,6 +10,8 @@ import {
 const ROUTER = express.Router();
 
 ROUTER.route('/roles').get(getRoles);
+
+ROUTER.route('/role').get(getRole);
 
 ROUTER.route('/roles/update').patch(updateRole);
 

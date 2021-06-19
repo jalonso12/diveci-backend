@@ -1,9 +1,9 @@
-const app = require('./app');
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import app from './src/app.mjs';
 
 const DATABASE = process.env.DATABASE.replace(
   '<PASSWORD>',
-  process.env.DB_PASS
+  process.env.DB_PASS,
 );
 
 mongoose
@@ -16,5 +16,7 @@ mongoose
   .then(() => console.log('DB connection stablished!'));
 
 app.listen(process.env.SERVER_PORT, () => {
-  console.log('Server started on localhost:' + process.env.SERVER_PORT);
+  console.log(
+    `<--- App running on localhost (Port: ${process.env.SERVER_PORT}) --->`,
+  );
 });

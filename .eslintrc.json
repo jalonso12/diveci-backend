@@ -16,7 +16,6 @@
       {
         ".mjs": "ignorePackages"
       }
-    ],
-    "no-param-reassign": ["errors", { "props": false }]
+    ]
   }
 }

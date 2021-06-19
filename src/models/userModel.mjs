@@ -5,6 +5,10 @@ import { decryptText, encryptText } from '../utils/encryptor.mjs';
 
 const userSchema = new mongoose.Schema(
   {
+    idTag: {
+      // Not Required because it must be set automatically
+      type: String,
+    },
     username: {
       type: String,
       minLength: 8,
@@ -36,6 +40,7 @@ const userSchema = new mongoose.Schema(
         'Password required and must be of at least 8 characters',
       ],
       minLength: 8,
+      select: false,
     },
     confirmPassword: {
       type: String,
@@ -51,9 +56,9 @@ const userSchema = new mongoose.Schema(
       },
       select: false,
     },
-    role: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Role',
+    role_id: {
+      type: String,
+      required: true,
     },
     createdAt: String,
     updatedAt: String,

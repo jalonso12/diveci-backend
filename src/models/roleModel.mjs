@@ -4,6 +4,10 @@ import { decryptText, encryptText } from '../utils/encryptor.mjs';
 
 const roleSchema = new mongoose.Schema(
   {
+    idTag: {
+      // Not Required because it must be set automatically
+      type: String,
+    },
     title: {
       type: String,
       unique: true,

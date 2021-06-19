@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "This is a project build for the course Web Development II.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,19 @@
   },
   "homepage": "https://github.com/jalonso12/diveci-backend#readme",
   "devDependencies": {
-    "dotenv": "^10.0.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "argon2": "^0.27.2",
     "connect-redis": "^5.2.0",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "moment": "^2.29.1",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.11",
     "redis": "^3.1.2"

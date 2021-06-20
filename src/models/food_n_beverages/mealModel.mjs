@@ -1,30 +1,28 @@
 import mongoose from 'mongoose';
 import moment from 'moment';
 
-const clientSchema = new mongoose.Schema(
+const mealSchema = new mongoose.Schema(
   {
     idTag: String,
     name: {
       type: String,
       required: true,
     },
-    age: {
-      type: Number,
-      required: true,
-    },
-    email: {
+    ingredients: {
+      // THIS MUST BE AN ARRAY OF INGREDIENTS AKA RECIPE
+      // PRICE
+      // WEIGHT
       type: String,
       required: true,
     },
-    phone: {
+    stock: {
       type: Number,
       required: true,
     },
-    visits: {
+    price: {
       type: Number,
       required: true,
     },
-    order_id: String,
     createdAt: String,
     updatedAt: String,
   },
@@ -35,6 +33,6 @@ const clientSchema = new mongoose.Schema(
   },
 );
 
-const Client = mongoose.model('Client', clientSchema);
+const Meal = mongoose.model('Meal', mealSchema);
 
-export default Client;
+export default Meal;

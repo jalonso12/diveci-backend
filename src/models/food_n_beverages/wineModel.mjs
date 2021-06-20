@@ -32,6 +32,7 @@ const wineSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    country_id: String,
     priceGlass: {
       type: Number,
     },

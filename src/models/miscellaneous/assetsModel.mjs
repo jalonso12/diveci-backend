@@ -20,8 +20,8 @@ const assetsSchema = new mongoose.Schema(
       },
       required: true,
     },
-    quantity: {
-      type: Number,
+    type: {
+      type: String,
       required: true,
     },
     createdAt: String,

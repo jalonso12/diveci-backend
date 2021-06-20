@@ -11,7 +11,7 @@ const providerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    agentLastName: {
+    agentLastname: {
       type: String,
       required: true,
     },

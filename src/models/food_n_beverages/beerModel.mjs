@@ -24,7 +24,7 @@ const beerSchema = new mongoose.Schema(
       required: true,
     },
     vol: {
-      type: String,
+      type: Number,
       required: true,
     },
     quantity: {
@@ -38,6 +38,7 @@ const beerSchema = new mongoose.Schema(
     // Make sure validation for one filled is made on the front-end
     priceTap: {
       type: Number,
+      default: 0,
     },
     priceBottle: {
       type: Number,

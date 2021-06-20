@@ -8,8 +8,8 @@ import {
 
 const ROUTER = express.Router();
 
-ROUTER.route('/').post(createRestaurant).get(getRestaurants);
-ROUTER.route('/update').patch(updateRestaurant);
-ROUTER.route('/remove').delete(removeRestaurant);
+ROUTER.route('/restaurant').post(createRestaurant).get(getRestaurants);
+ROUTER.route('/restaurant/update').patch(updateRestaurant);
+ROUTER.route('/restaurant/remove').delete(removeRestaurant);
 
 export default ROUTER;

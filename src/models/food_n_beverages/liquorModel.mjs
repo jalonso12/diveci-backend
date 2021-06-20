@@ -9,7 +9,7 @@ const liquorSchema = new mongoose.Schema(
       required: true,
     },
     vol: {
-      type: String,
+      type: Number,
       required: true,
     },
     country_id: String,

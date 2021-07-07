@@ -1,4 +1,4 @@
-function notFound(err, data, res) {
+export const notFound = (err, data, res) => {
   if (err) return err;
   if (!data) {
     return res.status(404).json({
@@ -7,7 +7,7 @@ function notFound(err, data, res) {
     });
   }
   return false;
-}
+};
 
 // CREATE
 export const createItem = (Model) => async (req, res) => {
@@ -58,6 +58,7 @@ export const updateItem = (Model) => async (req, res) => {
       ...req.body,
     };
 
+    /* eslint-disable-next-line */
     data._doc = newData;
 
     data.save();

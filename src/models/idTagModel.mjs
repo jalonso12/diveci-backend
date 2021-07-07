@@ -18,7 +18,6 @@ const idTagSchema = new mongoose.Schema(
     value: {
       type: Number,
       default: 12,
-      select: false,
     },
     // Is pretty much unnecessary to ask this...
     // hasPrefix: {
@@ -83,6 +82,17 @@ idTagSchema.post('init', function () {
   this.type = decryptText(this.type);
   this.description = decryptText(this.description);
 });
+
+idTagSchema.methods.generateTag = function (value) {
+  const tag = 'CLI-';
+
+  const generatedTag = `${tag}${value}`;
+
+  return generatedTag;
+};
+
+// CREATE METHOD THAT WILL RUN AT CREATE
+// IN ORDER TO ASSIGN THE CORRECT VALUE TO THE IDTAG
 
 const IdTag = mongoose.model('IdTag', idTagSchema);
 

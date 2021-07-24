@@ -1,6 +1,7 @@
 import {
   notFound,
   getItem,
+  getItems,
   updateItem,
   removeItem,
 } from '../handlers/handleFactory.mjs';
@@ -33,13 +34,7 @@ export const createIdTag = async (req, res) => {
   });
 };
 
-// export const getIdTags = getItems(IdTag);
-export const getIdTags = async (req, res) => {
-  console.log('c:');
-
-  return res;
-};
-
+export const getIdTags = getItems(IdTag);
 export const getIdTag = getItem(IdTag);
 export const updateIdTag = updateItem(IdTag);
 export const removeIdTag = removeItem(IdTag);

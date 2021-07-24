@@ -1,6 +1,28 @@
 import mongoose from 'mongoose';
-import moment from 'moment';
 import { encryptText, decryptText } from '../utils/encryptor.mjs';
+
+const prefixes = [
+  'TEC-',
+  'CVZ-',
+  'CJS-',
+  'FAC-',
+  'CLI-',
+  'P-',
+  'LH-',
+  'L-',
+  'LOG-',
+  'COM-',
+  'B-',
+  'DE-',
+  'PRO-',
+  'PPO-',
+  'RES-',
+  'ROL-',
+  'ME-',
+  'EU-',
+  'USU-',
+  'VN-',
+];
 
 const idTagSchema = new mongoose.Schema(
   {
@@ -28,46 +50,13 @@ const idTagSchema = new mongoose.Schema(
     prefix: {
       type: String,
       enum: {
-        values: [
-          'CLI-',
-          'PE-',
-          'PRO-',
-          'PU-',
-          'EVE-',
-          'USU-',
-          'UM-',
-          'P-',
-          'M-',
-          'COM-',
-          'DE-',
-          'EU-',
-          'LH-',
-          'TEC-',
-          'RES-',
-          'BUF-',
-          'ESP-',
-          'BC-',
-          'BH-',
-          'BG-',
-          'L-',
-          'V-',
-          'EMP-',
-          'ME-',
-          'LOG-',
-          'FAC-',
-          'ROL-',
-        ],
+        values: prefixes,
         message: 'Please enter a valid prefix',
       },
-      select: false,
     },
-    createdAt: String,
-    updatedAt: String,
   },
   {
-    timestamps: {
-      currentTime: () => moment().format('MMMM Do YYYY, h:mm:ss a'),
-    },
+    timestamps: true,
   },
 );
 
@@ -82,14 +71,6 @@ idTagSchema.post('init', function () {
   this.type = decryptText(this.type);
   this.description = decryptText(this.description);
 });
-
-idTagSchema.methods.generateTag = function (value) {
-  const tag = 'CLI-';
-
-  const generatedTag = `${tag}${value}`;
-
-  return generatedTag;
-};
 
 // CREATE METHOD THAT WILL RUN AT CREATE
 // IN ORDER TO ASSIGN THE CORRECT VALUE TO THE IDTAG

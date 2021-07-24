@@ -1,4 +1,7 @@
-function notFound(err, data, res) {
+import IdTag from '../models/idTagModel.mjs';
+import { prefixSelector } from './handleAction.mjs';
+
+export const notFound = (err, data, res) => {
   if (err) return err;
   if (!data) {
     return res.status(404).json({
@@ -7,11 +10,43 @@ function notFound(err, data, res) {
     });
   }
   return false;
+};
+
+async function generateTag(body, prefix) {
+  // Find last idTag in db
+  let lastIdTag = await IdTag.findOne(
+    { prefix },
+    'type description value', // '' lets you project the values you want to be shown
+    { sort: { createdAt: -1 } },
+  );
+
+  if (await !lastIdTag) {
+    lastIdTag = {
+      value: 11,
+    };
+  }
+
+  // Create
+  const newIdTag = await prefixSelector(
+    body.title || body.name || '',
+    prefix,
+    lastIdTag.value,
+  );
+
+  await IdTag.create(newIdTag);
+
+  return newIdTag.tag;
 }
 
 // CREATE
-export const createItem = (Model) => async (req, res) => {
-  await Model.create(req.body, (err, data) => {
+export const createItem = (Model, prefix) => async (req, res) => {
+  const itemBody = {
+    ...req.body,
+    idTag: await generateTag(req.body, prefix),
+  };
+
+  // Create item
+  await Model.create(itemBody, (err, data) => {
     if (notFound(err, data, res)) return null;
 
     return res.status(200).json({
@@ -58,6 +93,7 @@ export const updateItem = (Model) => async (req, res) => {
       ...req.body,
     };
 
+    /* eslint-disable-next-line */
     data._doc = newData;
 
     data.save();
